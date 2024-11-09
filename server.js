@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const { sequelize, connectDB } = require("./config/db");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 connectDB()

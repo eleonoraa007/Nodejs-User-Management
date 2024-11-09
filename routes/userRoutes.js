@@ -1,6 +1,5 @@
 const express = require("express");
 const auth = require("../middleware/authMiddleware");
-const admin = require("../middleware/adminMiddleware");
 const {
   getProfile,
   updateProfile,
@@ -9,7 +8,7 @@ const {
 const router = express.Router();
 
 router.get("/profile", auth, getProfile);
-router.put("/profile", auth, updateProfile);
+router.put("/profile/update", auth, updateProfile);
 router.put("/profile/password", auth, updatePassword);
 
 module.exports = router;

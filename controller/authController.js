@@ -25,6 +25,7 @@ exports.register = async (req, res) => {
     });
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
+    console.error("Registration Error: ", err);
     res.status(500).json({ err: err.message });
   }
 };
@@ -48,7 +49,8 @@ exports.login = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    res.json({ token });
+    // res.json({ token });
+    res.json({ token, role: user.role });
   } catch (err) {
     res.status(500).json({ err: err.message });
   }
